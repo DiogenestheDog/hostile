@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
+require('dotenv').config()
+console.log(process.env)
 
+console.log(process.env.MAP_KEY);
 const app = express();
 const port = process.env.PORT || 3000;
 
