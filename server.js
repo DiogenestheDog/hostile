@@ -5,7 +5,11 @@ console.log(process.env)
 
 console.log(process.env.MAP_KEY);
 const app = express();
-const port = process.env.PORT || 3000;
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
