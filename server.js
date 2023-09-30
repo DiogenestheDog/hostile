@@ -21,6 +21,12 @@ app.get('/api/mapkey', (req, res) => {
     res.json({ mapKey });
 });
 
+app.get('/api/locations', (req, res) => {
+    console.log("found the locations");
+    const locations = "honk"
+    res.json({ locations });
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });

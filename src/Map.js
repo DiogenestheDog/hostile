@@ -5,13 +5,13 @@ async function fetchApiKey() {
     const response = await fetch("/api/mapkey");
     const mapObj = await response.json();
     //console.log(mapKey);
-      if (!response.ok) {
-        throw new Error("Network response was not OK");
-      }
-    return mapObj.mapKey;
-    } catch (error) {
-      console.error("There has been a problem with your fetch operation:", error);
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
     }
+    return mapObj.mapKey;
+  } catch (error) {
+      console.error("There has been a problem with your fetch operation:", error);
+  }
 }
 
 
@@ -27,22 +27,13 @@ function MapComponent({ apiKey }) {
     // https://www.google.com/maps/embed/v1/MAP_MODE?key=YOUR_API_KEY&parameters
   }, [apiKey]);
 
-  const defaultProps = {
-        center: {
-          lat: 33.6160809,
-          lng: -117.8662961
-        },
-        zoom: 11
-      };
-
   // Render your component JSX here
   return (
-        // Important! Always set the container height explicitly
-        <div id="map" style={{ height: '100vh', width: '100%' }}>
-          <Marker />
-        </div>
-      );
-//  return <div>MapComponent</div>;
+    // Important! Always set the container height explicitly
+     <div id="map" style={{ height: '100vh', width: '100%' }}>
+    
+      </div>
+  );
 }
 
 function ParentComponent() {
@@ -63,20 +54,35 @@ function ParentComponent() {
 
           // Your map initialization logic here
           const { Map } = await google.maps.importLibrary("maps");
-
+          
           const map = new Map(document.getElementById("map"), {
-            center: { lat: 37.7749, lng: -122.4194 }, // Set the center of the map to San Francisco
+            center: { lat: 33.6131727, lng: -117.8651481 }, // Set the center of the map to Newport Beach 
             zoom: 12, // Set the initial zoom level
           });
         
           // Add markers or any other map-related logic here
           const myLatLng = { lat: -25.363, lng: 131.044 };
 
-          new google.maps.Marker({
-            position: myLatLng,
-            map,
-            title: "Hello World!",
-          });
+          // new google.maps.Marker({
+          //   position: myLatLng,
+          //   map,
+          //   title: "Hello World!",
+          // });
+          async function fetchLocations() {
+            try {
+              const response = await fetch("api/locations");
+              const locationFile = response.json();
+              if (!response.ok) {
+                throw new Error("Network response was not OK");
+              }
+              return locationFile;
+            } catch (error) {
+              console.error("There has been a problem with your fetch operation:", error);
+            }
+          }
+
+          const locations = await fetchLocations();
+          console.log(locations);
         
         }
         initMap();
