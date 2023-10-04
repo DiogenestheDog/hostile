@@ -20,6 +20,10 @@
     "url": "https://github.com/DiogenestheDog/hostile/issues"
   },
   "homepage": "https://github.com/DiogenestheDog/hostile#readme",
+  "type": "module",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "dependencies": {
     "@prisma/client": "^5.4.0",
     "dotenv": "^16.1.4",
@@ -33,6 +37,7 @@
     "@babel/core": "^7.22.1",
     "@babel/preset-env": "^7.22.4",
     "@babel/preset-react": "^7.22.3",
+    "@faker-js/faker": "^8.1.0",
     "babel-loader": "^9.1.2",
     "html-webpack-plugin": "^5.5.1",
     "prisma": "^5.4.0",
