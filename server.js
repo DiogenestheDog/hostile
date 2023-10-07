@@ -1,7 +1,9 @@
-const express = require('express');
-const path = require('path');
-
-require('dotenv').config();
+import express from 'express';
+import path from 'path';
+import 'dotenv/config';
+import { dirname,join } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 console.log(process.env);
 console.log(process.env.MAP_KEY);
@@ -13,7 +15,7 @@ if (port == null || port == "") {
     port = "8000";
 }
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(join(__dirname, 'dist')));
 
 app.get('/api/mapkey', (req, res) => {
     console.log("I'm in the route");
