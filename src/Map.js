@@ -61,8 +61,15 @@ function ParentComponent() {
           });
         
           // Add markers or any other map-related logic here
-          const myLatLng = { lat: -25.363, lng: 131.044 };
 
+          const spots = await fetch("api/locations");
+          console.log(`spots: ${spots}`);
+
+          new google.maps.Marker({
+            position: { lat: spots[0].latitude, lng: spots[0].longitude },
+            map,
+            title: "Ah",
+          });
           // new google.maps.Marker({
           //   position: myLatLng,
           //   map,

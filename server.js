@@ -1,12 +1,14 @@
 import express from 'express';
 import path from 'path';
 import 'dotenv/config';
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient;
 import { dirname,join } from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-console.log(process.env);
-console.log(process.env.MAP_KEY);
+// console.log(process.env);
+// console.log(process.env.MAP_KEY);
 
 const app = express();
 let port = process.env.PORT;
@@ -23,9 +25,9 @@ app.get('/api/mapkey', (req, res) => {
     res.json({ mapKey });
 });
 
-app.get('/api/locations', (req, res) => {
-    console.log("found the locations");
-    const locations = "honk"
+app.get('/api/spots', async (req, res) => {
+    console.log("found the spots");
+    const locations = await prisma.spot.findMany();
     res.json({ locations });
 });
 
