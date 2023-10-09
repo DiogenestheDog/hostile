@@ -20,15 +20,14 @@ if (port == null || port == "") {
 app.use(express.static(join(__dirname, 'dist')));
 
 app.get('/api/mapkey', (req, res) => {
-    console.log("I'm in the route");
     const mapKey = process.env.MAP_KEY;
     res.json({ mapKey });
 });
 
 app.get('/api/spots', async (req, res) => {
     console.log("found the spots");
-    const locations = await prisma.spot.findMany();
-    res.json({ locations });
+    const spots = await prisma.spot.findMany();
+    res.json({ spots });
 });
 
 app.get('*', (req, res) => {
@@ -37,4 +36,5 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => {
     console.log(`I'm here on port ${port}`);
+    console.log("Did you know that I love you?");
 });

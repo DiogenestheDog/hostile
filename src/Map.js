@@ -62,34 +62,57 @@ function ParentComponent() {
         
           // Add markers or any other map-related logic here
 
-          const spots = await fetch("api/locations");
-          console.log(`spots: ${spots}`);
 
-          new google.maps.Marker({
-            position: { lat: spots[0].latitude, lng: spots[0].longitude },
-            map,
-            title: "Ah",
-          });
+          async function fetchSpots() {
+            try {
+              const res = await fetch("api/spots");
+              const spotsJSON = await res.json();
+              const spots = spotsJSON.spots;
+              new google.maps.Marker({
+                position: { lat: spots[0].latitude,
+                            lng: spots[0].longitude,
+                          },
+                map,
+                title: "Hi friend",
+              });
+              new google.maps.Marker({
+                position: { lat: spots[1].latitude,
+                            lng: spots[1].longitude,
+                          },
+                map,
+                title: "I made it",
+              });
+            } catch(error) {
+              console.log("could not fetch spots");
+              console.log(error);
+            }
+          }
+
+          fetchSpots();
+
+          // new google.maps.Marker({
+          //   position: { lat: spots[0].latitude, lng: spots[0].longitude },
+          //   map,
+          //   title: "Ah",
+          // });
           // new google.maps.Marker({
           //   position: myLatLng,
           //   map,
           //   title: "Hello World!",
           // });
-          async function fetchLocations() {
-            try {
-              const response = await fetch("api/locations");
-              const locationFile = response.json();
-              if (!response.ok) {
-                throw new Error("Network response was not OK");
-              }
-              return locationFile;
-            } catch (error) {
-              console.error("There has been a problem with your fetch operation:", error);
-            }
-          }
 
-          const locations = await fetchLocations();
-          console.log(locations);
+          // async function fetchLocations() {
+          //   try {
+          //     const response = await fetch("api/locations");
+          //     const locationFile = response.json();
+          //     return locationFile;
+          //   } catch (error) {
+          //     console.error("There has been a problem with your fetch operation:", error);
+          //   }
+          // }
+
+          // const locations = await fetchLocations();
+          // console.log(locations);
         
         }
         initMap();
