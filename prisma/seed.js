@@ -5,10 +5,12 @@ import { faker } from '@faker-js/faker';
 
 async function seedDb() {
     // use faker to generate dummy data
-    for(let i = 0; i < 10; i++) {
+    for(let i = 0; i < 50; i++) {
         // email needs to be the same in the user and post
         // section so save a copy of it before upsert
         const email = faker.internet.email();
+        // const spotTitle = faker.lorem.words(6);
+    //    console.log(spotTitle.length);
         await prisma.user.upsert({
             where: { email: email },
             update: {},
@@ -17,7 +19,7 @@ async function seedDb() {
                 username: faker.internet.userName(),
                 spots: {
                     create: {
-                        title: faker.lorem.words(3),
+                        title: faker.lorem.words(6),
                         description: faker.lorem.paragraph(),
                         latitude: faker.location.latitude({ max: 33.625798, min: 33.618043, precision: 6 }),
                         longitude: faker.location.longitude({ max: -117.858633, min: -117.863332, precision: 6 })

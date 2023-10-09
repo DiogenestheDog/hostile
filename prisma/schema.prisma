@@ -24,7 +24,7 @@ model Spot {
   updatedAt   DateTime  @updatedAt
   latitude    Float     @db.Real
   longitude   Float     @db.Real
-  title       String    @db.VarChar(24)
+  title       String    @db.VarChar(64)
   description String?    @db.Text
   user        User      @relation("UserSpots", fields: [userId], references: [id])
   @@index([latitude, longitude])

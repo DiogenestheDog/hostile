@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Spot" ALTER COLUMN "title" SET DATA TYPE VARCHAR(64);
