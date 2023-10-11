@@ -23,16 +23,19 @@ async function seedDb() {
                     create: {
                         title: faker.lorem.words(6),
                         description: faker.lorem.paragraph(),
-                        latitude: faker.location.latitude({ max: 33.625798, min: 33.618043, precision: 6 }),
-                        longitude: faker.location.longitude({ max: -117.858633, min: -117.863332, precision: 6 })
+                        latitude: faker.location.latitude({ max: 33.658142, min: 33.594620, precision: 6 }),
+                        longitude: faker.location.longitude({ max: -117.789052, min: -117.902299, precision: 6 })
                     },
                 },
             },
         });
     }
 }
-// lat 33.625798 - 33.618043
-// long -117.858633 - -117.863332
+
+
+// 33.658142, -117.902299 top left
+// 33.594620, -117.789052 bottom right
+
 seedDb()
     .then(async () => {
         await prisma.$disconnect();

@@ -1,9 +1,9 @@
 import React from 'react';
-import Map from './Map.js';
+import MapHolder from './MapHolder.js';
 
 const App = () => (
     <div id="app">
-      <Map />
+      <MapHolder />
     </div>
 );
 
