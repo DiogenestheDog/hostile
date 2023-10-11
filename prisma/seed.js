@@ -9,8 +9,10 @@ async function seedDb() {
         // email needs to be the same in the user and post
         // section so save a copy of it before upsert
         const email = faker.internet.email();
+        
+        // prisma migrate reset fails if title is too long
         // const spotTitle = faker.lorem.words(6);
-    //    console.log(spotTitle.length);
+        // console.log(spotTitle.length);
         await prisma.user.upsert({
             where: { email: email },
             update: {},
