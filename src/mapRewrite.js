@@ -13,16 +13,51 @@ function MapComponent({ apiKey }) {
       // https://www.google.com/maps/embed/v1/MAP_MODE?key=YOUR_API_KEY&parameters
 
        // Your map initialization logic here
-       const { Map } = google.maps.importLibrary("maps");
-      
-       const map = new Map(document.getElementById("map"), {
-         center: { lat: 33.6131727, lng: -117.8651481 }, // Set the center of the map to Newport Beach 
-         zoom: 12, // Set the initial zoom level
-         mapTypeId: 'satellite',
-       });
-       setMap(map);
+       async function initMap() {
+        // load Maps API
+  
+  
+        // Your map initialization logic here
+        const { Map } = await google.maps.importLibrary("maps");
+        
+        const map = new Map(document.getElementById("map"), {
+          center: { lat: 33.6131727, lng: -117.8651481 }, // Set the center of the map to Newport Beach 
+          zoom: 12, // Set the initial zoom level
+          mapTypeId: 'satellite',
+        });
+  
+        map.addListener('click', () => {
+          window.alert("wah");
+        });
+        
+        // return { map, Map };
+        // Add markers or any other map-related logic here
+  
+        async function fetchSpots() {
+          try {
+            const res = await fetch("api/spots");
+            const spotsJSON = await res.json();
+            const spots = spotsJSON.spots;
+            spots.forEach( spot => {
+              new google.maps.Marker({
+                position: {
+                  lat: spot.latitude,
+                  lng: spot.longitude,
+                },
+                map,
+                title: spot.title,
+              });
+            });
+          } catch(error) {
+            console.log("could not fetch spots");
+            console.log(error);
+          }
+        }
+        fetchSpots();     
+      }
+      const {Map, map} = initMap();
 
-    }, [apiKey]);
+    });
     
     async function initMap() {
       // load Maps API
