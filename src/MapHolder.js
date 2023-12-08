@@ -6,6 +6,7 @@ function MapHolder() {
   const [apiKey, setApiKey] = useState(null);
 
   useEffect(() => {
+
     async function initializeApp() {
       try {
         const fetchedApiKey = await fetchApiKey();
@@ -36,7 +37,7 @@ function MapHolder() {
 
   return (
     <>
-      {apiKey ? <MapComponent apiKey={apiKey} /> : <div>Loading...</div>}
+      {apiKey ? <MapComponent /> : <div>Loading...</div>}
     </>
   );
 }
