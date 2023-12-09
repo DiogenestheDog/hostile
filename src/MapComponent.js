@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Marker from "./Marker.js";
+import Marker from "./Spot.js";
 
 function MapComponent({ apiKey }) {
     // Use the API key within the component

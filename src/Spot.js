@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
-function Marker(map, spot) {
+function Spot({spot, map}) {
+
+    console.log("spot: " + spot.toString());
+    console.log(spot);
 
     if (map === null) { return "map is null"; }
     else {
@@ -18,4 +21,4 @@ function Marker(map, spot) {
 
 console.log("Hello I'm awkward like my mom");
 
-export default Marker;
+export default Spot;
