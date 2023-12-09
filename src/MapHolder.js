@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
-//import MapComponent from "./MapComponent.js"
-import MapComponent from "./mapRewrite.js";
+import MapComponent from "./MapComponent.js";
 
 function MapHolder() {
   const [apiKey, setApiKey] = useState(null);

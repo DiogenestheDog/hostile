@@ -10,23 +10,21 @@ function SpotsGutter({ map }) {
             try {
                 const res = await fetch("api/spots");
                 const spotsJSON = await res.json();
-                //setSpots(spotsJSON.spots);
-                console.log(spotsJSON.spots);
                 setSpots(spotsJSON.spots);
             } catch(error) {
-              console.log("could not fetch spots");
-              console.log(error);
+                console.log("could not fetch spots");
+                console.log(error);
             }
         }
         fetchSpots();
     }, []);
 
     return ( 
-    <div className="tempGutter">
+    <>
         {spots ? spots.map( (spot, i) => {
-            return <Spot spot={spot} map={map} key={i} />
+            return <Spot spot={spot} map={map} key={spot.id} />
         }): null}
-    </div> );
+    </> );
 }
 
 export default SpotsGutter;
