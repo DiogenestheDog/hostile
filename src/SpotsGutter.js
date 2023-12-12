@@ -4,10 +4,16 @@ import Spot from "./Spot.js";
 function SpotsGutter({ map }) {
 
     const [spots, setSpots] = useState(null);
+    const [markerLib, setMarkerLib] = useState(null);
 
     useEffect( () => {
         const fetchSpots = async () => {
             try {
+
+                // maker sure marker lib returned before fetching spots
+                const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+                // useState executes functions passed to it so I put it in an array
+                setMarkerLib([AdvancedMarkerElement]);
                 const res = await fetch("api/spots");
                 const spotsJSON = await res.json();
                 setSpots(spotsJSON.spots);
@@ -21,9 +27,7 @@ function SpotsGutter({ map }) {
 
     return ( 
     <>
-        {spots ? spots.map( (spot, i) => {
-            return <Spot spot={spot} map={map} key={spot.id} />
-        }): null}
+        {spots && markerLib ? spots.map( spot => <Spot spot={spot} map={map} key={spot.id} AME={markerLib[0]} />): null}
     </> );
 }
 
