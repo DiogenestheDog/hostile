@@ -16,11 +16,18 @@ function Spot({spot, map, AME}) {
         },
         map,
         title: spot.title,
-    })
+    });
 
-    // marker.addListener("click", () => {
-    //     window.alert("wah");
-    // });
+    const infoPopup = new google.maps.InfoWindow({
+        content: `<h1>${spot.title}</h1><img src="https://picsum.photos/200/300">`,
+    });
+
+    marker.addListener("click", () => {
+        infoPopup.open({
+            anchor: marker,
+            map,
+        })
+    });
 };
 
 console.log("Hello I'm awkward like my mom");

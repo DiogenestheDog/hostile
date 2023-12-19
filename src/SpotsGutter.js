@@ -9,8 +9,7 @@ function SpotsGutter({ map }) {
     useEffect( () => {
         const fetchSpots = async () => {
             try {
-
-                // maker sure marker lib returned before fetching spots
+                // maker sure marker lib returned before fetching  spots
                 const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
                 // useState executes functions passed to it so I put it in an array
                 setMarkerLib([AdvancedMarkerElement]);
