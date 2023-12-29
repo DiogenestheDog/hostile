@@ -19,7 +19,7 @@ function Spot({spot, map, AME}) {
     });
 
     const infoPopup = new google.maps.InfoWindow({
-        content: `<h1>${spot.title}</h1><img src="https://picsum.photos/200/300">`,
+        content: `<img src="https://picsum.photos/200/300"><h1>${spot.title}</h1>`,
     });
 
     marker.addListener("click", () => {
