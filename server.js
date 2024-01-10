@@ -14,7 +14,7 @@ const app = express();
 let port = process.env.PORT;
 
 if (port == null || port == "") {
-    port = "8000";
+    port = "3000";
 }
 
 app.use(express.static(join(__dirname, 'dist')));
@@ -31,8 +31,13 @@ app.get('/api/spots', async (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    res.sendFile("./index.html");
 });
+
+
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+// });
 
 app.listen(port, () => {
     console.log(`I'm here on port ${port}`);

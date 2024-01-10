@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Spot from "./Spot.js";
+import Spot from "./Spot.jsx";
 
 function SpotsGutter({ map }) {
 
@@ -26,7 +26,13 @@ function SpotsGutter({ map }) {
 
     return ( 
     <>
-        {spots && markerLib ? spots.map( spot => <Spot spot={spot} map={map} key={spot.id} AME={markerLib[0]} />): null}
+        {spots && markerLib ? spots.map( spot => <Spot 
+            spot={spot} 
+            map={map} 
+            key={spot.id} 
+            AME={markerLib[0]} 
+        />): 
+        null}
     </> );
 }
 

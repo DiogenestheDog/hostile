@@ -18,15 +18,21 @@ function Spot({spot, map, AME}) {
         title: spot.title,
     });
 
-    const infoPopup = new google.maps.InfoWindow({
-        content: `<img src="https://picsum.photos/200/300"><h1>${spot.title}</h1>`,
+    const infoPopUp = new google.maps.InfoWindow({
+        content:
+        `<section>
+            <img src="https://picsum.photos/400/200">
+            <h1>${spot.title}</h1>
+            <p>${spot.description}</p>
+        </section>`,
     });
 
     marker.addListener("click", () => {
-        infoPopup.open({
-            anchor: marker,
-            map,
-        })
+        // infoPopUp.open({
+        //     anchor: marker,
+        //     map,
+        // })
+        toggleInfoWindow(infoPopUp);
     });
 };
 

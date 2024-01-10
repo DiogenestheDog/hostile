@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import MapComponent from "./MapComponent.js";
+import MapComponent from "./MapComponent.jsx";
 
 function MapHolder() {
   const [apiKey, setApiKey] = useState(null);
@@ -22,7 +22,7 @@ function MapHolder() {
 
       async function fetchApiKey() {
         try {
-          const response = await fetch("/api/mapkey");
+          const response = await fetch("https://localhost:3000/api/mapkey");
           const mapObj = await response.json();
           return mapObj.mapKey;
         } catch (error) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import MapHolder from './MapHolder.js';
+import MapHolder from './MapHolder.jsx';
 
 const App = () => (
     <div id="app">

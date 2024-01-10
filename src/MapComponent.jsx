@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SpotsGutter from "./SpotsGutter.js";
+import SpotsGutter from "./SpotsGutter.jsx";
 
 function MapComponent({ apiKey }) {
     // Use the API key within the component

@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "webpack",
+    "build": "vite build",
+    "dev": "vite",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --mode=development --open",
-    "preserver": "webpack",
+    "start": "vite serve --mode=development --open",
+    "preserver": "vite build",
     "server": "node server.js"
   },
   "repository": {
@@ -26,7 +27,10 @@
   },
   "dependencies": {
     "@prisma/client": "^5.4.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
     "dotenv": "^16.1.4",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
     "express": "^4.18.2",
     "pg": "^8.11.1",
     "react": "^18.2.0",
@@ -38,10 +42,12 @@
     "@babel/preset-env": "^7.22.4",
     "@babel/preset-react": "^7.22.3",
     "@faker-js/faker": "^8.1.0",
+    "@vitejs/plugin-react": "^4.2.1",
     "babel-loader": "^9.1.2",
     "html-webpack-plugin": "^5.5.1",
     "prisma": "^5.4.0",
     "source-map-loader": "^4.0.1",
+    "vite": "^5.0.11",
     "webpack": "^5.85.0",
     "webpack-cli": "^5.1.3",
     "webpack-dev-server": "^4.15.0"
