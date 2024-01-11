@@ -22,7 +22,7 @@ function MapHolder() {
 
       async function fetchApiKey() {
         try {
-          const response = await fetch("https://localhost:3000/api/mapkey");
+          const response = await fetch("http://localhost:3000/api/mapkey");
           const mapObj = await response.json();
           return mapObj.mapKey;
         } catch (error) {

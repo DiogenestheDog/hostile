@@ -28,11 +28,10 @@ function Spot({spot, map, AME}) {
     });
 
     marker.addListener("click", () => {
-        // infoPopUp.open({
-        //     anchor: marker,
-        //     map,
-        // })
-        toggleInfoWindow(infoPopUp);
+        infoPopUp.open({
+            anchor: marker,
+            map,
+        })
     });
 };
 

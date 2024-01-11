@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import 'dotenv/config';
+import cors from 'cors';
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient;
 import { dirname,join } from 'path';
@@ -17,14 +18,19 @@ if (port == null || port == "") {
     port = "3000";
 }
 
+// CORS IS FOR DEV ONLY, RESEARCH SECURITY BEFORE MAKING SITE LIVE
+const corsOptions = {
+    origin: 'http://localhost:8000',
+}
+
 app.use(express.static(join(__dirname, 'dist')));
 
-app.get('/api/mapkey', (req, res) => {
+app.get('/api/mapkey', cors({corsOptions}), (req, res) => {
     const mapKey = process.env.MAP_KEY;
     res.json({ mapKey });
 });
 
-app.get('/api/spots', async (req, res) => {
+app.get('/api/spots', cors({corsOptions}), async (req, res) => {
     console.log("found the spots");
     const spots = await prisma.spot.findMany();
     res.json({ spots });

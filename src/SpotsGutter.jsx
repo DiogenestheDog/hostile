@@ -13,7 +13,7 @@ function SpotsGutter({ map }) {
                 const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
                 // useState executes functions passed to it so I put it in an array
                 setMarkerLib([AdvancedMarkerElement]);
-                const res = await fetch("api/spots");
+                const res = await fetch("http://localhost:3000/api/spots");
                 const spotsJSON = await res.json();
                 setSpots(spotsJSON.spots);
             } catch(error) {
