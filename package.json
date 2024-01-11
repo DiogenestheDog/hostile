@@ -6,6 +6,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "vite serve --mode=development --open",
     "preserver": "vite build",
@@ -27,11 +28,10 @@
   },
   "dependencies": {
     "@prisma/client": "^5.4.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
     "cors": "^2.8.5",
     "dotenv": "^16.1.4",
-    "eslint": "^8.56.0",
-    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
     "express": "^4.18.2",
     "pg": "^8.11.1",
     "react": "^18.2.0",
@@ -39,7 +39,9 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.1.0",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
     "prisma": "^5.4.0",
     "vite": "^5.0.11"
   }
