@@ -11,8 +11,8 @@ function SpotsGutter({ map }) {
             try {
                 // maker sure marker lib returned before fetching  spots
                 const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-                // useState executes functions passed to it so I put it in an array
-                setMarkerLib([AdvancedMarkerElement]);
+                // useState executes functions passed to it so I return it from a function
+                setMarkerLib(() =>AdvancedMarkerElement);
                 const res = await fetch("http://localhost:3000/api/spots");
                 const spotsJSON = await res.json();
                 setSpots(spotsJSON.spots);
@@ -30,7 +30,7 @@ function SpotsGutter({ map }) {
             spot={spot} 
             map={map} 
             key={spot.id} 
-            AME={markerLib[0]} 
+            AME={markerLib} 
         />): 
         null}
     </> );

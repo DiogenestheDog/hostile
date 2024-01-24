@@ -5,8 +5,6 @@ function MapComponent({ apiKey }) {
     // Use the API key within the component
     // Example usage: Render the Google Maps component using the apiKey prop
     const [map, setMap] = useState(null);
-    const [spots, setSpots] = useState(null);
-
 
     // REMEMBER to add an empty array to useEffect or else it will run after every render
     useEffect(() => {
@@ -21,6 +19,15 @@ function MapComponent({ apiKey }) {
           mapTypeId: 'satellite',
           mapId: "9362e8cb170e6348",
         });
+
+        map.addListener('click', (e) => {
+          console.log(e.latLng.lng());
+        });
+
+        map.addListener('drag', (e) => {
+          console.log("Help I'm being dragged");
+        });
+
         setMap(map);
       }
 
